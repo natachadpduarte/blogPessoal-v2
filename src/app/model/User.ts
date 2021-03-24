@@ -1,4 +1,4 @@
-import { Post} from './Post';
+import { Postagem } from './Postagem';
 
 export class User {
     public id: number
@@ -7,5 +7,5 @@ export class User {
     public senha: string
     public foto: string
     public tipo: string
-    public post: Post[]
+    public post: Postagem[]
 }
