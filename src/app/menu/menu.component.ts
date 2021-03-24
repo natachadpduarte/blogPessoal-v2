@@ -20,7 +20,7 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  sair(){
+  sair() {
     this.router.navigate(['/entrar'])
     environment.token = ''
     environment.nome = ''
