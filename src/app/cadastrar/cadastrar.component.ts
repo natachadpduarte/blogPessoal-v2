@@ -20,7 +20,7 @@ export class CadastrarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    window.scroll(0, 0)
+    window.scroll(0, 0) //ao carregar o componente vai para a posição 0 (topo)
   }
 
   confirmSenha(event: any) {
