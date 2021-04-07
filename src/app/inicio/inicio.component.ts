@@ -80,6 +80,7 @@ export class InicioComponent implements OnInit {
       alert('Postagem realizada com sucesso!')
       this.postagem = new Postagem()
       this.getAllPostagens()
+      this.findByIdUser()
     })
   }
 }
