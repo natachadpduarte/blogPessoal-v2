@@ -13,39 +13,40 @@ import { environment } from 'src/environments/environment.prod';
 export class PostagemDeleteComponent implements OnInit {
 
 
- postagem: Postagem = new Postagem()
- idPost: number
- 
+  postagem: Postagem = new Postagem()
+  idPost: number
+
   constructor(
-    
+
     private router: Router,
     private route: ActivatedRoute,
     private postagemService: PostagemService,
     private alertas: AlertasService
-   ) { }
+  ) { }
 
-  ngOnInit() { window.scroll(0,0)
-    
-  if(environment.token == ''){
-    this.router.navigate(['/entrar'])
+  ngOnInit() {
+    window.scroll(0, 0)
+
+    if (environment.token == '') {
+      this.router.navigate(['/entrar'])
+    }
+
+    this.idPost = this.route.snapshot.params['id']
+    this.findByIdPostagem(this.idPost)
+
   }
 
-  this.idPost = this.route.snapshot.params['id']
-  this.findByIdPostagem(this.idPost)
-
-}
-
-findByIdPostagem(id: number) {
-  this.postagemService.getByIdPostagem(id).subscribe((resp: Postagem) => {
-    this.postagem = resp
-  })
-}
+  findByIdPostagem(id: number) {
+    this.postagemService.getByIdPostagem(id).subscribe((resp: Postagem) => {
+      this.postagem = resp
+    })
+  }
 
 
-apagar(){
-  this.postagemService.deletePostagem(this.idPost).subscribe(() => {
-    this.alertas.showAlertSuccess('Postagem apagada com sucesso!')
-    this.router.navigate(['/inicio'])
-  })
-}
+  apagar() {
+    this.postagemService.deletePostagem(this.idPost).subscribe(() => {
+      this.alertas.showAlertSuccess('Postagem apagada com sucesso!')
+      this.router.navigate(['/inicio'])
+    })
+  }
 }

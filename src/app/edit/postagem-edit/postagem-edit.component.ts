@@ -31,9 +31,9 @@ export class PostagemEditComponent implements OnInit {
 
   ngOnInit() {
 
-    window.scroll(0,0)
-    
-    if(environment.token == ''){
+    window.scroll(0, 0)
+
+    if (environment.token == '') {
       this.router.navigate(['/entrar'])
     }
 
@@ -48,21 +48,21 @@ export class PostagemEditComponent implements OnInit {
     })
   }
 
-  findByIdTema(){
+  findByIdTema() {
     this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema) => {
       this.tema = resp
     })
   }
 
 
-  findAllTemas(){
+  findAllTemas() {
     this.temaService.getAllTema().subscribe((resp: Tema[]) => {
       this.listaTemas = resp
     })
   }
 
 
-  atualizar(){
+  atualizar() {
     this.tema.id = this.idTema
     this.postagem.tema = this.tema
 

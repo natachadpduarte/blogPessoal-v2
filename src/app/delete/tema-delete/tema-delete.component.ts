@@ -12,36 +12,36 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class TemaDeleteComponent implements OnInit {
 
-  tema:Tema = new Tema
+  tema: Tema = new Tema
   idTema: number
 
   constructor(
-  private temaService: TemaService,
-  private router: Router,
-  private route: ActivatedRoute,
-  private alertas: AlertasService
-  ){ }
+    private temaService: TemaService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private alertas: AlertasService
+  ) { }
 
   ngOnInit() {
 
-    if(environment.token == ''){
+    if (environment.token == '') {
       this.router.navigate(['/entrar'])
+    }
+
+    this.idTema = this.route.snapshot.params['id']
+    this.findByTema(this.idTema)
   }
 
-this.idTema= this.route.snapshot.params['id']
-this.findByTema(this.idTema)
-}
+  findByTema(id: number) {
+    this.temaService.getByIdTema(id).subscribe((resp: Tema) => {
+      this.tema = resp
+    })
+  }
 
-findByTema(id: number){
-this.temaService.getByIdTema(id).subscribe((resp: Tema)=>{
-  this.tema = resp
-})
-}
-
-apagar(){
-  this.temaService.deleteTema(this.idTema).subscribe(()=>{
-    this.alertas.showAlertSuccess('Tema apagado com sucesso!')
-    this.router.navigate(['/tema'])
-  })
-}
+  apagar() {
+    this.temaService.deleteTema(this.idTema).subscribe(() => {
+      this.alertas.showAlertSuccess('Tema apagado com sucesso!')
+      this.router.navigate(['/tema'])
+    })
+  }
 }

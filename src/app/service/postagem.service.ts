@@ -19,11 +19,11 @@ export class PostagemService {
     return this.http.get<Postagem[]>('http://localhost:8080/postagens', this.token)
   }
 
-  getByIdPostagem(id: number): Observable<Postagem>{
+  getByIdPostagem(id: number): Observable<Postagem> {
     return this.http.get<Postagem>(`http://localhost:8080/postagens/${id}`, this.token)
   }
 
-  getByTituloPostagem(titulo: string): Observable<Postagem[]>{
+  getByTituloPostagem(titulo: string): Observable<Postagem[]> {
     return this.http.get<Postagem[]>(`http://localhost:8080/postagens/titulo/${titulo}`, this.token)
   }
 
@@ -32,11 +32,11 @@ export class PostagemService {
     return this.http.post<Postagem>('http://localhost:8080/postagens', postagem, this.token)
   }
 
-  putPostagem(postagem: Postagem): Observable<Postagem>{
+  putPostagem(postagem: Postagem): Observable<Postagem> {
     return this.http.put<Postagem>('http://localhost:8080/postagens', postagem, this.token)
   }
 
-  deletePostagem(id: number){
-  return this.http.delete(`http://localhost:8080/postagens/${id}`, this.token)
+  deletePostagem(id: number) {
+    return this.http.delete(`http://localhost:8080/postagens/${id}`, this.token)
   }
 }
